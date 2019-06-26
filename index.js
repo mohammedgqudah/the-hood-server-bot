@@ -12,7 +12,7 @@ import { CREATE_DROP } from "./events-fn/create-drop";
 import { TAKE_DROP } from "./events-fn/take-drop";
 
 const client = new Discord.Client();
-const adapter = new FileSync("db.json");
+const adapter = new FileSync("~/db.json");
 const db = low(adapter);
 const readDir = promisify(fs.readdir);
 const server = express();
