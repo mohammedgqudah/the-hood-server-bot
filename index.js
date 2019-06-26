@@ -5,6 +5,7 @@ import Discord from "discord.js";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import express from "express";
+import http from 'http';
 
 import { LOGGER } from "./src/logger";
 import defaultSettings from "./src/defaultSettings";
@@ -19,7 +20,9 @@ const server = express();
 
 server.get("/", (req, res) => res.send("/"));
 server.listen(process.env.PORT);
-
+setInterval(function() {
+  http.get("http://stark-springs-63443.herokuapp.com");
+}, 300000);
 require("dotenv").config();
 
 client.on("ready", () => {
