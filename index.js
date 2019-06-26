@@ -4,6 +4,7 @@ import { promisify } from "util";
 import Discord from "discord.js";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
+import express from "express";
 
 import { LOGGER } from "./src/logger";
 import defaultSettings from "./src/defaultSettings";
@@ -14,6 +15,10 @@ const client = new Discord.Client();
 const adapter = new FileSync("db.json");
 const db = low(adapter);
 const readDir = promisify(fs.readdir);
+const server = express();
+
+server.get("/", (req, res) => res.send("/"));
+server.listen(process.env.PORT);
 
 require("dotenv").config();
 
@@ -73,8 +78,8 @@ client.on("message", async msg => {
   if (msg.content.startsWith(PREFIX) && commandsNames.includes(cmd)) {
     commands[cmd](client, msg);
   }
-  if (msg.content.toLowerCase()=='ur gay') {
-    msg.reply('***NO U***')
+  if (msg.content.toLowerCase() == "ur gay") {
+    msg.reply("***NO U***");
   }
 });
 
