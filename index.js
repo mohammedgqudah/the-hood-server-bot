@@ -79,29 +79,29 @@ client.on("message", async msg => {
     }
   }
   /////
-  if (
-    on ||
-    db
-      .get("settings.whitelist")
-      .value()
-      .includes(msg.author.id)
-  ) {
-    let PREFIX = db.get("settings.prefix").value();
-    let cmd = msg.content.split(" ")[0].replace(PREFIX, "").toLowerCase();
+  let PREFIX = db.get("settings.prefix").value();
+  let cmd = msg.content
+    .split(" ")[0]
+    .replace(PREFIX, "")
+    .toLowerCase();
+  if (msg.content.startsWith(PREFIX) && commandsNames.includes(cmd)) {
     if (
-      msg.content.startsWith(PREFIX) &&
-      commandsNames.includes(cmd)
+      on ||
+      db
+        .get("settings.whitelist")
+        .value()
+        .includes(msg.author.id)
     ) {
       commands[cmd](client, msg);
+    } else {
+      const embed = new Discord.RichEmbed().setDescription(
+        `The bot is currently under development`
+      );
+      msg.channel.send(embed);
     }
-    if (msg.content.toLowerCase() == "ur gay") {
-      msg.reply("***NO U***");
-    }
-  } else {
-    const embed = new Discord.RichEmbed().setDescription(
-      `The bot is currently under development`
-    );
-    msg.channel.send(embed);
+  }
+  if (msg.content.toLowerCase() == "ur gay") {
+    msg.reply("***NO U***");
   }
 });
 
