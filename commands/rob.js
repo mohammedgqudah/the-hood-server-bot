@@ -1,7 +1,8 @@
 import discord from "discord.js";
 
 export default (client, msg) => {
-  let r = Math.random() <= 0.3,
+  console.log('chance', client.db.get('settings.chance').value());
+  let r = Math.random() <= (Number(client.db.get('settings.chance').value()) || 0.7),
     desc = "";
   let min_weebies = 40;
   let rob = Math.floor(Math.random() * (30 - 10) + 10);

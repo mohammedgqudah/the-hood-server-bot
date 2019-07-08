@@ -11,5 +11,6 @@ export default {
     "uwu",
     "hahaha fak"
   ],
-  whitelist: ["Adminstrator", "403829844238008320"]
+  chance: 0.7,
+  whitelist: ["Adminstrator", "403829844238008320", "475496356732076032"]
 };
