@@ -91,3 +91,4 @@ typings/
 .vscode/
 # Log
 *.log
+db.json

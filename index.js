@@ -5,7 +5,7 @@ import Discord from "discord.js";
 import low from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import express from "express";
-import http from 'http';
+import http from "http";
 
 import { LOGGER } from "./src/logger";
 import defaultSettings from "./src/defaultSettings";
@@ -13,7 +13,7 @@ import { CREATE_DROP } from "./events-fn/create-drop";
 import { TAKE_DROP } from "./events-fn/take-drop";
 
 const client = new Discord.Client();
-const adapter = new FileSync('db.json');
+const adapter = new FileSync("db.json");
 const db = low(adapter);
 const readDir = promisify(fs.readdir);
 const server = express();
@@ -86,4 +86,4 @@ client.on("message", async msg => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.DEV_TOKEN);
