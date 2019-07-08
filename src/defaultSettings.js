@@ -12,5 +12,6 @@ export default {
     "hahaha fak"
   ],
   chance: 0.7,
-  whitelist: ["Adminstrator", "403829844238008320", "475496356732076032"]
+  whitelist: ["Adminstrator", "403829844238008320", "475496356732076032"],
+  on: "1"
 };
