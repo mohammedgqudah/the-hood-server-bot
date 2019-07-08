@@ -7,6 +7,7 @@ export default (client, msg) => {
   let rob = Math.floor(Math.random() * (30 - 10) + 10);
   let user = msg.mentions.users.first();
   if (!user) return msg.reply("You must mention a user to rob");
+  if (user.id == msg.author.id) return msg.reply(`Fuck off, you can't rob yourself`);
   let user_weebies = client.db.get(`weebies.${user.id}`);
   let author_weebies = client.db.get(`weebies.${msg.author.id}`);
   if (author_weebies < 5) return msg.reply("you must have 5 hoes at least");
